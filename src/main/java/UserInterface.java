@@ -62,7 +62,10 @@ public class UserInterface {
 
             } else if (menuChoice == 2) {
                 System.out.println("Liste af superhelte: ");
-                superheroDatabase.seeAllHeroes();
+                ArrayList<Superhero> superheroes = superheroDatabase.seeAllHeroes();
+                for (Superhero superhero : superheroes) {
+                    System.out.println(superhero);
+                }
 
             } else if (menuChoice == 3) {
                 System.out.println("indtast søgning: ");

@@ -3,10 +3,10 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Database {
-    Superhero testHero = new Superhero("Mu", "Mik", "Styrke", 92, true, 233);
-    Superhero testHero2 = new Superhero("Mus", "Mar", "Flyve", 92, true, 232);
+    //Superhero testHero = new Superhero("Mu", "Mik", "Styrke", 92, true, 233);
+    //Superhero testHero2 = new Superhero("Mus", "Mar", "Flyve", 92, true, 232);
 
-    ArrayList<Superhero> superheroes = new ArrayList<>(Arrays.asList(testHero, testHero2));
+    ArrayList<Superhero> superheroes = new ArrayList<>();
 
 
     public void createSuperhero(String name, String realName, String superPower, int yearCreated, boolean isHuman, int strength) {
@@ -85,10 +85,8 @@ public class Database {
         }
     }
 
-    public void seeAllHeroes() {
-        for (Superhero superhero : superheroes) {
-            System.out.println(superhero);
-        }
+    public ArrayList<Superhero> seeAllHeroes() {
+        return superheroes;
     }
 
     public void deleteHero(String superhero, Scanner keyboard) {
@@ -120,7 +118,7 @@ public class Database {
             superheroToDelete = resultsToDelete.get(0);
         }
         if (resultsToDelete != null) {
-            resultsToDelete.remove(superheroToDelete);
+            superheroes.remove(superheroToDelete);
             System.out.println("Superhelten er nu fjernet fra listen!");
         }
     }
