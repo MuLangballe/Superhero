@@ -3,8 +3,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Database {
-    Superhero testHero = new Superhero("Mu", "Mik", "Styrke", 92,true, 233);
-    Superhero testHero2 = new Superhero("Mus", "Mar", "Flyve", 92,true, 232);
+    Superhero testHero = new Superhero("Mu", "Mik", "Styrke", 92, true, 233);
+    Superhero testHero2 = new Superhero("Mus", "Mar", "Flyve", 92, true, 232);
 
     ArrayList<Superhero> superheroes = new ArrayList<>(Arrays.asList(testHero, testHero2));
 
@@ -27,7 +27,7 @@ public class Database {
         ArrayList<Superhero> resultsToEdit = findSuperhero(superhero);
         Superhero superheroToEdit = null;
 
-        while(resultsToEdit.isEmpty()) {
+        while (resultsToEdit.isEmpty()) {
             System.out.println("Superhelt ikke fundet!");
             System.out.println("Indtast superhelten du ønsker at redigere: ");
             String newSearch = keyboard.nextLine();
@@ -91,7 +91,41 @@ public class Database {
         }
     }
 
-    public int getSize(){
-        return superheroes.size();
+    public void deleteHero(String superhero, Scanner keyboard) {
+        ArrayList<Superhero> resultsToDelete = findSuperhero(superhero);
+        Superhero superheroToDelete = null;
+
+        while (resultsToDelete.isEmpty()) {
+            System.out.println("Superhelt ikke fundet!");
+            System.out.println("Indtast superhelten du ønsker at slette: ");
+            String newSearch = keyboard.nextLine();
+            resultsToDelete = findSuperhero(newSearch);
+        }
+        if (resultsToDelete.size() > 1) {
+            System.out.println("Vælg superhelt: ");
+            int count = 1;
+            for (Superhero sh : resultsToDelete) {
+                System.out.println(count++ +
+                        sh.getName() + " \n " +
+                        sh.getRealName() + " \n " +
+                        sh.getSuperPower() + " \n " +
+                        sh.getYearCreated() + " \n " +
+                        sh.getStrength());
+            }
+            int superheroChoice = keyboard.nextInt();
+            keyboard.nextLine();
+            superheroToDelete = resultsToDelete.get(superheroChoice - 1);
+
+        } else {
+            superheroToDelete = resultsToDelete.get(0);
+        }
+        if (resultsToDelete != null) {
+            resultsToDelete.remove(superheroToDelete);
+            System.out.println("Superhelten er nu fjernet fra listen!");
+        }
     }
-}
+
+        public int getSize () {
+            return superheroes.size();
+        }
+    }

@@ -13,6 +13,7 @@ public class UserInterface {
                     "2. Se liste af superhelte \n " +
                     "3. Søg efter superhelt \n " +
                     "4. Rediger eksistrende superhelt \n " +
+                    "5. Slet superhelt \n " +
                     "9. Afslut");
             while (!keyboard.hasNextInt()) {
                 String text = keyboard.next();
@@ -81,6 +82,10 @@ public class UserInterface {
                 String superheroToEdit = keyboard.nextLine();
                 superheroDatabase.editSuperhero(superheroToEdit, keyboard);
 
+            } else if (menuChoice == 5) {
+                System.out.println("Indtast helten du ønsker at slette: ");
+                String superheroToDelete  = keyboard.nextLine();
+                superheroDatabase.deleteHero(superheroToDelete, keyboard);
             }
         } while (menuChoice != 9);
     }
