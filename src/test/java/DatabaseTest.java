@@ -47,6 +47,7 @@ class DatabaseTest {
         db.deleteHero("Spin", keyboard);
         ArrayList<Superhero> result = db.findSuperhero("Spin");
         assertTrue(result.isEmpty());
+        //forudsætter at findSuperhero  virker
     }
 
     @Test

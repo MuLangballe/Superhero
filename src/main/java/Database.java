@@ -120,7 +120,7 @@ public class Database {
         if (resultsToDelete != null) {
             superheroes.remove(superheroToDelete);
             System.out.println("Superhelten er nu fjernet fra listen!");
-        }
+        } //removeAll??
     }
 
         public int getSize () {
