@@ -95,6 +95,10 @@ public class UserInterface {
 
             case 5 :
                 System.out.println("Indtast helten du ønsker at slette: ");
+                ArrayList<Superhero> superherolist = superheroDatabase.seeAllHeroes();
+                for (Superhero superhero : superherolist){
+                    System.out.println(superhero);
+                }
                 String superheroToDelete  = keyboard.nextLine();
                 boolean succesDelete = superheroDatabase.deleteSuperhero1(superheroToDelete);
                         if(succesDelete){
