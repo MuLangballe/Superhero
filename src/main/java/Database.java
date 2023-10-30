@@ -3,10 +3,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Database {
-    //Superhero testHero = new Superhero("Mu", "Mik", "Styrke", 92, true, 233);
-    //Superhero testHero2 = new Superhero("Mus", "Mar", "Flyve", 92, true, 232);
+   // Superhero testHero = new Superhero("Mu", "Mik", "Styrke", 92, true, 233);
+   // Superhero testHero2 = new Superhero("Mus", "Mar", "Flyve", 92, true, 232);
 
     ArrayList<Superhero> superheroes = new ArrayList<>();
+
 
 
     public void createSuperhero(String name, String realName, String superPower, int yearCreated, boolean isHuman, int strength) {
@@ -22,7 +23,7 @@ public class Database {
         }
         return results;
     }
-
+// TODO: flyt brugerdialog til UI
     public void editSuperhero(String superhero, Scanner keyboard) {
         ArrayList<Superhero> resultsToEdit = findSuperhero(superhero);
         Superhero superheroToEdit = null;
@@ -89,7 +90,22 @@ public class Database {
         return superheroes;
     }
 
-    public void deleteHero(String superhero, Scanner keyboard) {
+    // TODO: flyt brugerdialog til UI
+    public boolean deleteSuperhero1(String superheroName){
+        for (Superhero superhero : superheroes){
+            if (superhero.getName().toLowerCase().equals(superheroName.toLowerCase()))
+                superheroes.remove(superhero);
+                return true;
+        }
+        return false;
+    }
+
+        public int getSize () {
+            return superheroes.size();
+        }
+    }
+
+    /* public void deleteHero(String superhero, Scanner keyboard) {
         ArrayList<Superhero> resultsToDelete = findSuperhero(superhero);
         Superhero superheroToDelete = null;
 
@@ -121,9 +137,4 @@ public class Database {
             superheroes.remove(superheroToDelete);
             System.out.println("Superhelten er nu fjernet fra listen!");
         } //removeAll??
-    }
-
-        public int getSize () {
-            return superheroes.size();
-        }
-    }
+    } */

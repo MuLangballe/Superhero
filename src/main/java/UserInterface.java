@@ -7,6 +7,8 @@ public class UserInterface {
         Database superheroDatabase = new Database();
         Scanner keyboard = new Scanner(System.in);
 
+        //TODO: (nice to do) ændre sproget til engelsk
+
         do {
             System.out.println("Velkommen til SUPERHERO UNIVERSET. \n " +
                     "1. Opret superhelt \n " +
@@ -22,7 +24,9 @@ public class UserInterface {
             menuChoice = keyboard.nextInt();
             keyboard.nextLine();
 
-            if (menuChoice == 1) {
+
+            switch (menuChoice) {
+            case 1 :
                 System.out.println("Tilføj superhelt: indtast superheltens navn: ");
                 String superHeroName = keyboard.nextLine();
 
@@ -59,15 +63,17 @@ public class UserInterface {
 
                 superheroDatabase.createSuperhero(superHeroName, superHeroRealName, superHeroSuperPower, superHeroYearCreated, isSuperheroHuman, superHeroStrength);
                 superheroDatabase.seeAllHeroes();
+            break;
 
-            } else if (menuChoice == 2) {
+            case 2 :
                 System.out.println("Liste af superhelte: ");
                 ArrayList<Superhero> superheroes = superheroDatabase.seeAllHeroes();
                 for (Superhero superhero : superheroes) {
                     System.out.println(superhero);
                 }
+            break;
 
-            } else if (menuChoice == 3) {
+            case 3 :
                 System.out.println("indtast søgning: ");
                 String searchSuperhero = keyboard.nextLine();
                 ArrayList<Superhero> searchResults = superheroDatabase.findSuperhero(searchSuperhero);
@@ -79,16 +85,25 @@ public class UserInterface {
                         System.out.println(superhero);
                     }
                 }
+            break;
 
-            } else if (menuChoice == 4) {
+            case 4 :
                 System.out.println("Indtast superhelten du ønsker at redigere: ");
                 String superheroToEdit = keyboard.nextLine();
                 superheroDatabase.editSuperhero(superheroToEdit, keyboard);
+            break;
 
-            } else if (menuChoice == 5) {
+            case 5 :
                 System.out.println("Indtast helten du ønsker at slette: ");
                 String superheroToDelete  = keyboard.nextLine();
-                superheroDatabase.deleteHero(superheroToDelete, keyboard);
+                boolean succesDelete = superheroDatabase.deleteSuperhero1(superheroToDelete);
+                        if(succesDelete){
+                            System.out.println(superheroToDelete + " blev slettet");
+                        }
+                        else {
+                            System.out.println("Der er ingen superhelt der kan slettes");
+                        }
+            break;
             }
         } while (menuChoice != 9);
     }

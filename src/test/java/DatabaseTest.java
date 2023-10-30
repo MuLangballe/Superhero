@@ -43,11 +43,11 @@ class DatabaseTest {
     }
 
     @Test
-    void deleteSuperhero(){
-        db.deleteHero("Spin", keyboard);
+    void deleteSuperhero1(){
+        db.deleteSuperhero1("Spin");
         ArrayList<Superhero> result = db.findSuperhero("Spin");
         assertTrue(result.isEmpty());
-        //forudsætter at findSuperhero  virker
+        //forudsætter at findSuperhero virker
     }
 
     @Test
@@ -58,3 +58,4 @@ class DatabaseTest {
         assertEquals(expectedSize, actualSize);
     }
 }
+
