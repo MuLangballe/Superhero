@@ -38,8 +38,23 @@ class DatabaseTest {
         assertEquals(expectedSize, actualSize);
     }
 
+
+    // Virker ikke endnu:
     @Test
     void editSuperhero() {
+        // arrange
+        ArrayList<Superhero> result = db.findSuperhero("Span");
+        int expectedSize = 1;
+        int actualSize = result.size();
+        // act
+        db.editSuperhero("Spin", keyboard);
+        keyboard.nextLine().equals("Span");
+        keyboard.nextLine().equals("Miles");
+        keyboard.nextLine().equals(2020);
+        keyboard.equals(true);
+        keyboard.nextLine().equals(1770);
+        // assert
+        assertEquals(expectedSize, actualSize);
     }
 
     @Test
