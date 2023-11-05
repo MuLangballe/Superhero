@@ -2,7 +2,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -59,7 +58,7 @@ class DatabaseTest {
 
     @Test
     void deleteSuperhero1(){
-        db.deleteSuperhero1("Spin");
+        db.deleteSuperhero("Spin");
         ArrayList<Superhero> result = db.findSuperhero("Spin");
         assertTrue(result.isEmpty());
         //forudsætter at findSuperhero virker
