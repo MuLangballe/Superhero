@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Controller {
     private Database database;
+    private FileHandler fh;
 
 
     public Controller(){
@@ -26,7 +27,11 @@ public class Controller {
         return database.seeAllHeroes();
     }
 
+    public ArrayList<Superhero> loadAllSuperhero(){
+        return fh.loadAllSuperheroes();
+    }
 
-
-
+    public void saveListOfSuperheroes(ArrayList<Superhero> superheroes) {
+        fh.saveListSuperHeroes(superheroes);
+    }
 }

@@ -175,6 +175,10 @@ public class UserInterface {
                         System.out.println("Der er ingen superhelt der kan slettes");
                     }
                     break;
+
+                case 9:
+                    // Save all superheroes
+
             }
         } while (menuChoice != 9);
     }
