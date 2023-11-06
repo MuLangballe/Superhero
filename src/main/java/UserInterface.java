@@ -14,6 +14,7 @@ public class UserInterface {
 
     public void startProgram() {
         int menuChoice;
+        //controller.loadAllSuperhero();
 
         //TODO: (nice to do) ændre sproget til engelsk
 
