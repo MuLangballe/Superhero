@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 
 public class Database {
-   // Superhero testHero = new Superhero("Mu", "Mik", "Styrke", 92, true, 233);
-   // Superhero testHero2 = new Superhero("Mus", "Mar", "Flyve", 92, true, 232);
 
     FileHandler fh = new FileHandler();
     ArrayList<Superhero> superheroes = fh.loadAllSuperheroes();
@@ -41,7 +39,6 @@ public class Database {
         }
         return false;
     }
-
         public int getSize () {
             return superheroes.size();
         }

@@ -7,7 +7,6 @@ public class UserInterface {
         public UserInterface (Controller controller){
             this.controller=controller;
         }
-
         Scanner keyboard = new Scanner(System.in);
 
 
