@@ -8,6 +8,7 @@ public class Controller {
 
     public Controller(){
         database = new Database();
+        fh = new FileHandler();
     }
 
     public void createSuperhero(String name, String realname, String superpower, int yearCreated, boolean isHuman, int strength){
