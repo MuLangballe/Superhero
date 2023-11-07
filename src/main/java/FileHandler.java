@@ -55,9 +55,9 @@ public class FileHandler {
                         + superhero.getSuperPower() + ";"
                         + superhero.getYearCreated() + ";"
                         + superhero.isHuman() + ";"
-                        + superhero.getStrength() + ";"
+                        + superhero.getStrength()
                 );
-            }
+            } output.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

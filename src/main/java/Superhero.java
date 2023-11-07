@@ -66,6 +66,10 @@ public class Superhero {
         this.yearCreated = yearCreated;
     }
 
+    public boolean getIsHuman(){
+        return isHuman;
+    }
+
     public boolean isHuman() {
         return isHuman;
     }

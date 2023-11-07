@@ -181,6 +181,43 @@ public class UserInterface {
                         System.out.println("Der er ingen superhelt der kan slettes");
                     }
                     break;
+                    
+                case 6:
+                        System.out.println("Hvilken parameter vil du sortere listen efter? \n" +
+                                "1. Superheltenavn: Alfabetisk \n " +
+                                "2. Rigtige navn: Alfabetisk \n " +
+                                "3. Superkræfter: Alfabetisk \n " +
+                                "4. Oprindelsesår: ældste først \n " +
+                                "5. Race: Mennesker øverst \n " +
+                                "6. Styrke: Stærkeste øverst \n ");
+
+                    int menuChoice2;
+                    menuChoice2 = keyboard.nextInt();
+                    keyboard.nextLine();
+
+/*                        if (!keyboard.hasNextInt()); {
+                            String text = keyboard.next();
+                            System.out.println("'" + text + "'" + " er ikke et gyldigt tal. Prøv igen.");
+                        } */
+
+
+                        switch (menuChoice2) {
+                            
+
+                            case 1:
+                                Collections.sort(controller.seeAllHeroes(), new NameComparator());
+                                break;
+
+
+                            case 2:
+                                Collections.sort(controller.seeAllHeroes(), new RealNameComparator());
+                                for (Superhero superhero: controller.seeAllHeroes()){
+                                    System.out.println(superhero);
+                                }
+
+                                break;
+                        }
+
 
                // case 9:
 

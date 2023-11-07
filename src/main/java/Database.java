@@ -32,11 +32,12 @@ public class Database {
     }
 
     public boolean deleteSuperhero(String superheroName){
-        for (Superhero superhero : superheroes){
-            if (superhero.getName().toLowerCase().equals(superheroName.toLowerCase()))
+        for (Superhero superhero : superheroes) {
+            if (superhero.getName().toLowerCase().equals(superheroName.toLowerCase())) {
                 superheroes.remove(superhero);
                 fh.saveListSuperHeroes(superheroes);
                 return true;
+            }
         }
         return false;
     }
