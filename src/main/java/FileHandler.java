@@ -17,7 +17,7 @@ public class FileHandler {
         Scanner sc;
         try {
             sc = new Scanner(file, StandardCharsets.ISO_8859_1);
-            sc.nextLine();
+            //sc.nextLine();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

@@ -1,11 +1,15 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class UserInterface {
 
         private Controller controller;
         public UserInterface (Controller controller){
-            this.controller=controller;
+            this.controller = controller;
         }
         Scanner keyboard = new Scanner(System.in);
 
@@ -24,6 +28,7 @@ public class UserInterface {
                     "3. Søg efter superhelt \n " +
                     "4. Rediger eksistrende superhelt \n " +
                     "5. Slet superhelt \n " +
+                    "6. Sorter din liste af superhelte \n" +
                     "9. Afslut");
             while (!keyboard.hasNextInt()) {
                 String text = keyboard.next();
@@ -176,7 +181,10 @@ public class UserInterface {
                     }
                     break;
 
-                case 9:
+               // case 9:
+
+
+
                     // Save all superheroes
 
             }
