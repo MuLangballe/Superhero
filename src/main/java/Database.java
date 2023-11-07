@@ -30,7 +30,6 @@ public class Database {
         return superheroes;
     }
 
-    // TODO: flyt brugerdialog til UI
     public boolean deleteSuperhero(String superheroName){
         for (Superhero superhero : superheroes){
             if (superhero.getName().toLowerCase().equals(superheroName.toLowerCase()))
@@ -39,6 +38,7 @@ public class Database {
         }
         return false;
     }
+
         public int getSize () {
             return superheroes.size();
         }
