@@ -17,7 +17,7 @@ public class FileHandler {
         Scanner sc;
         try {
             sc = new Scanner(file, StandardCharsets.ISO_8859_1);
-            sc.nextLine();
+            //sc.nextLine();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
@@ -55,9 +55,9 @@ public class FileHandler {
                         + superhero.getSuperPower() + ";"
                         + superhero.getYearCreated() + ";"
                         + superhero.isHuman() + ";"
-                        + superhero.getStrength() + ";"
+                        + superhero.getStrength()
                 );
-            }
+            } output.close();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

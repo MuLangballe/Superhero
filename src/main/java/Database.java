@@ -6,7 +6,8 @@ public class Database {
     ArrayList<Superhero> superheroes = fh.loadAllSuperheroes();
 
     public void createSuperhero(String name, String realName, String superPower, int yearCreated, boolean isHuman, int strength) {
-        superheroes.add(new Superhero(name, realName, superPower, yearCreated, isHuman,  strength));
+        superheroes.add(new Superhero(name, realName, superPower, yearCreated, isHuman, strength));
+        fh.saveListSuperHeroes(superheroes);
     }
 
     public ArrayList<Superhero> findSuperhero(String superhero) {
@@ -30,15 +31,17 @@ public class Database {
         return superheroes;
     }
 
-    // TODO: flyt brugerdialog til UI
     public boolean deleteSuperhero(String superheroName){
-        for (Superhero superhero : superheroes){
-            if (superhero.getName().toLowerCase().equals(superheroName.toLowerCase()))
+        for (Superhero superhero : superheroes) {
+            if (superhero.getName().toLowerCase().equals(superheroName.toLowerCase())) {
                 superheroes.remove(superhero);
+                fh.saveListSuperHeroes(superheroes);
                 return true;
+            }
         }
         return false;
     }
+
         public int getSize () {
             return superheroes.size();
         }

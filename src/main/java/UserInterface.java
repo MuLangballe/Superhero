@@ -1,11 +1,15 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class UserInterface {
 
         private Controller controller;
         public UserInterface (Controller controller){
-            this.controller=controller;
+            this.controller = controller;
         }
         Scanner keyboard = new Scanner(System.in);
 
@@ -24,6 +28,7 @@ public class UserInterface {
                     "3. Søg efter superhelt \n " +
                     "4. Rediger eksistrende superhelt \n " +
                     "5. Slet superhelt \n " +
+                    "6. Sorter din liste af superhelte \n" +
                     "9. Afslut");
             while (!keyboard.hasNextInt()) {
                 String text = keyboard.next();
@@ -158,6 +163,7 @@ public class UserInterface {
                         }
                         System.out.println(superheroToEdit.getName() + " er opdateret.");
                     }
+                    controller.saveListOfSuperheroes(controller.seeAllHeroes());
 
                     break;
 
@@ -175,8 +181,48 @@ public class UserInterface {
                         System.out.println("Der er ingen superhelt der kan slettes");
                     }
                     break;
+                    
+                case 6:
+                        System.out.println("Hvilken parameter vil du sortere listen efter? \n" +
+                                "1. Superheltenavn: Alfabetisk \n " +
+                                "2. Rigtige navn: Alfabetisk \n " +
+                                "3. Superkræfter: Alfabetisk \n " +
+                                "4. Oprindelsesår: ældste først \n " +
+                                "5. Race: Mennesker øverst \n " +
+                                "6. Styrke: Stærkeste øverst \n ");
 
-                case 9:
+                    int menuChoice2;
+                    menuChoice2 = keyboard.nextInt();
+                    keyboard.nextLine();
+
+/*                        if (!keyboard.hasNextInt()); {
+                            String text = keyboard.next();
+                            System.out.println("'" + text + "'" + " er ikke et gyldigt tal. Prøv igen.");
+                        } */
+
+
+                        switch (menuChoice2) {
+                            
+
+                            case 1:
+                                Collections.sort(controller.seeAllHeroes(), new NameComparator());
+                                break;
+
+
+                            case 2:
+                                Collections.sort(controller.seeAllHeroes(), new RealNameComparator());
+                                for (Superhero superhero: controller.seeAllHeroes()){
+                                    System.out.println(superhero);
+                                }
+
+                                break;
+                        }
+
+
+               // case 9:
+
+
+
                     // Save all superheroes
 
             }
