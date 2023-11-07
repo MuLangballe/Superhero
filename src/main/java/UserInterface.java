@@ -163,6 +163,7 @@ public class UserInterface {
                         }
                         System.out.println(superheroToEdit.getName() + " er opdateret.");
                     }
+                    controller.saveListOfSuperheroes(controller.seeAllHeroes());
 
                     break;
 
