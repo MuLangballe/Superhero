@@ -1,5 +1,7 @@
 package datasource;
 
+import domain_model.Superhero;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
