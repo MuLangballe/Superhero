@@ -1,3 +1,5 @@
+import domain_model.Database;
+import domain_model.Superhero;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

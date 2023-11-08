@@ -1,18 +1,24 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
+package user_interface;
+
+import domain_model.Controller;
+import domain_model.NameComparator;
+import domain_model.RealNameComparator;
+import domain_model.Superhero;
+
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
 public class UserInterface {
 
-        private Controller controller;
-        public UserInterface (Controller controller){
-            this.controller = controller;
-        }
-        Scanner keyboard = new Scanner(System.in);
+    private Controller controller;
 
+    public UserInterface(Controller controller) {
+        this.controller = controller;
+    }
+
+    Scanner keyboard = new Scanner(System.in);
 
 
     public void startProgram() {
@@ -181,15 +187,15 @@ public class UserInterface {
                         System.out.println("Der er ingen superhelt der kan slettes");
                     }
                     break;
-                    
+
                 case 6:
-                        System.out.println("Hvilken parameter vil du sortere listen efter? \n" +
-                                "1. Superheltenavn: Alfabetisk \n " +
-                                "2. Rigtige navn: Alfabetisk \n " +
-                                "3. Superkræfter: Alfabetisk \n " +
-                                "4. Oprindelsesår: ældste først \n " +
-                                "5. Race: Mennesker øverst \n " +
-                                "6. Styrke: Stærkeste øverst \n ");
+                    System.out.println("Hvilken parameter vil du sortere listen efter? \n" +
+                            "1. Superheltenavn: Alfabetisk \n " +
+                            "2. Rigtige navn: Alfabetisk \n " +
+                            "3. Superkræfter: Alfabetisk \n " +
+                            "4. Oprindelsesår: ældste først \n " +
+                            "5. Race: Mennesker øverst \n " +
+                            "6. Styrke: Stærkeste øverst \n ");
 
                     int menuChoice2;
                     menuChoice2 = keyboard.nextInt();
@@ -201,26 +207,23 @@ public class UserInterface {
                         } */
 
 
-                        switch (menuChoice2) {
-                            
+                    switch (menuChoice2) {
 
-                            case 1:
-                                Collections.sort(controller.seeAllHeroes(), new NameComparator());
-                                break;
+                        case 1:
+                            Collections.sort(controller.seeAllHeroes(), new NameComparator());
+                            break;
 
+                        case 2:
+                            Collections.sort(controller.seeAllHeroes(), new RealNameComparator());
+                            for (Superhero superhero : controller.seeAllHeroes()) {
+                                System.out.println(superhero);
+                            }
 
-                            case 2:
-                                Collections.sort(controller.seeAllHeroes(), new RealNameComparator());
-                                for (Superhero superhero: controller.seeAllHeroes()){
-                                    System.out.println(superhero);
-                                }
-
-                                break;
-                        }
+                            break;
+                    }
 
 
-               // case 9:
-
+                    // case 9:
 
 
                     // Save all superheroes

@@ -1,3 +1,5 @@
+package domain_model;
+
 import java.util.ArrayList;
 
 public class Database {
@@ -23,7 +25,7 @@ public class Database {
 
     public ArrayList<Superhero> seeAllHeroes() {
 
-//        for (Superhero i: fh.loadAllSuperheroes()) {
+//        for (domain_model.Superhero i: fh.loadAllSuperheroes()) {
 //        if (fh.loadAllSuperheroes() != null){
 //            superheroes.add(i);
 //        }
