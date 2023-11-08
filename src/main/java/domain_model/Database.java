@@ -1,7 +1,6 @@
 package domain_model;
 
 import datasource.FileHandler;
-
 import java.io.File;
 import java.util.ArrayList;
 
@@ -31,7 +30,6 @@ public class Database {
         }
         return results;
     }
-
 
     public ArrayList<Superhero> seeAllHeroes() {
         return superheroes;
