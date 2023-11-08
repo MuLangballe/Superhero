@@ -26,12 +26,6 @@ public class Database {
 
 
     public ArrayList<Superhero> seeAllHeroes() {
-
-//        for (domain_model.Superhero i: fh.loadAllSuperheroes()) {
-//        if (fh.loadAllSuperheroes() != null){
-//            superheroes.add(i);
-//        }
-//        }
         return superheroes;
     }
 
