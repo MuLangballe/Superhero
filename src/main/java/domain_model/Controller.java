@@ -5,8 +5,8 @@ import datasource.FileHandler;
 import java.util.ArrayList;
 
 public class Controller {
-    private Database database;
-    private FileHandler fh;
+    private final Database database;
+    private final FileHandler fh;
 
 
     public Controller(){

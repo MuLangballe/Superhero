@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    private Controller controller;
+    private final Controller controller;
 
     public UserInterface(Controller controller) {
         this.controller = controller;
@@ -192,7 +192,7 @@ public class UserInterface {
                 case 6:
                     System.out.println("""
                             Hvilken parameter vil du sortere listen efter?\s
-                            1. Superheltenavn: Alfabetisk\s
+                             1. Superheltenavn: Alfabetisk\s
                              2. Rigtige navn: Alfabetisk\s
                              3. Superkræfter: Alfabetisk\s
                              4. Oprindelsesår: ældste først\s
