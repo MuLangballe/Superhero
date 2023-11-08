@@ -14,7 +14,7 @@ class DatabaseTest {
 
     ArrayList<Superhero> testSuperheroes = new ArrayList<>();
 
-    @
+
 
     @BeforeEach
     void setUp(){
@@ -31,7 +31,8 @@ class DatabaseTest {
     }
     @Test
     void createSuperhero() {
-        int startSize = db.getSize();
+        int startSize = loadSuperheroTest().size();
+
         db.createSuperhero("Superman", "Clark", "Styrke", 1940, false, 2330);
         int expectedDBSize = startSize + 1;
         int actualSize = db.getSize();
