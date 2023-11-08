@@ -42,7 +42,7 @@ public class FileHandler {
 
             superheroes.add(superhero);
         }
-        sc.close();
+        //sc.close();
         return superheroes;
     }
 
