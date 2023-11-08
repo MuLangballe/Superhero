@@ -1,30 +1,17 @@
 package user_interface;
-
-import domain_model.Controller;
-import domain_model.NameComparator;
-import domain_model.RealNameComparator;
-import domain_model.Superhero;
-
+import domain_model.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.util.*;
 
 public class UserInterface {
-
     private final Controller controller;
-
     public UserInterface(Controller controller) {
         this.controller = controller;
     }
-
     Scanner keyboard = new Scanner(System.in);
-
-
 
     public void startProgram() {
         int menuChoice;
