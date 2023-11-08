@@ -28,14 +28,15 @@ public class UserInterface {
         //TODO: (nice to do) ændre sproget til engelsk
 
         do {
-            System.out.println("Velkommen til SUPERHERO UNIVERSET. \n " +
-                    "1. Opret superhelt \n " +
-                    "2. Se liste af superhelte \n " +
-                    "3. Søg efter superhelt \n " +
-                    "4. Rediger eksistrende superhelt \n " +
-                    "5. Slet superhelt \n " +
-                    "6. Sorter din liste af superhelte \n" +
-                    "9. Afslut");
+            System.out.println("""
+                    Velkommen til SUPERHERO UNIVERSET.\s
+                     1. Opret superhelt\s
+                     2. Se liste af superhelte\s
+                     3. Søg efter superhelt\s
+                     4. Rediger eksistrende superhelt\s
+                     5. Slet superhelt\s
+                     6. Sorter din liste af superhelte\s
+                    9. Afslut""");
             while (!keyboard.hasNextInt()) {
                 String text = keyboard.next();
                 System.out.println("'" + text + "'" + " er ikke et gyldigt tal. Prøv igen.");
@@ -139,7 +140,7 @@ public class UserInterface {
                     } else {
                         superheroToEdit = resultsToEdit.get(0);
                     }
-                    if (resultsToEdit != null) {
+                    if (!resultsToEdit.isEmpty()) {
                         System.out.println("Rediger information. Tryk ENTER hvis information ikke skal redigeres.");
                         String newValue;
                         System.out.println("Navn: " + superheroToEdit.getName());
@@ -189,13 +190,15 @@ public class UserInterface {
                     break;
 
                 case 6:
-                    System.out.println("Hvilken parameter vil du sortere listen efter? \n" +
-                            "1. Superheltenavn: Alfabetisk \n " +
-                            "2. Rigtige navn: Alfabetisk \n " +
-                            "3. Superkræfter: Alfabetisk \n " +
-                            "4. Oprindelsesår: ældste først \n " +
-                            "5. Race: Mennesker øverst \n " +
-                            "6. Styrke: Stærkeste øverst \n ");
+                    System.out.println("""
+                            Hvilken parameter vil du sortere listen efter?\s
+                            1. Superheltenavn: Alfabetisk\s
+                             2. Rigtige navn: Alfabetisk\s
+                             3. Superkræfter: Alfabetisk\s
+                             4. Oprindelsesår: ældste først\s
+                             5. Race: Mennesker øverst\s
+                             6. Styrke: Stærkeste øverst\s
+                            \s""");
 
                     int menuChoice2;
                     menuChoice2 = keyboard.nextInt();
