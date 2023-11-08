@@ -182,14 +182,16 @@ public class UserInterface {
                     break;
 
                 case 6:
-                    System.out.println("Hvilken parameter vil du sortere listen efter? \n" +
-                            "1. Superheltenavn: Alfabetisk \n " +
-                            "2. Rigtige navn: Alfabetisk \n " +
-                            "3. Superkræfter: Alfabetisk \n " +
-                            "4. Oprindelsesår: ældste først \n " +
-                            "5. Race: Mennesker øverst \n " +
-                            "6. Styrke: Stærkeste øverst \n " +
-                            "7. Sorter efter 2 parametre \n");
+                    System.out.println("""
+                            Hvilken parameter vil du sortere listen efter?\s
+                            1. Superheltenavn: Alfabetisk\s
+                             2. Rigtige navn: Alfabetisk\s
+                             3. Superkræfter: Alfabetisk\s
+                             4. Oprindelsesår: ældste først\s
+                             5. Race: Mennesker øverst\s
+                             6. Styrke: Stærkeste øverst\s
+                             7. Sorter efter 2 parametre\s
+                            """);
 
                     int menuChoice2;
                     menuChoice2 = keyboard.nextInt();
@@ -246,13 +248,14 @@ public class UserInterface {
 
                         case 7:
 
-                                    System.out.println("Which two attributes do you want to sort by? " +
-                                    "1. Superheltenavn: Alfabetisk \n " +
-                                    "2. Rigtige navn: Alfabetisk \n " +
-                                    "3. Superkræfter: Alfabetisk \n " +
-                                    "4. Oprindelsesår: ældste først \n " +
-                                    "5. Race: Mennesker øverst \n " +
-                                    "6. Styrke: Stærkeste øverst \n ");
+                                    System.out.println("""
+                                            Which two attributes do you want to sort by? 1. Superheltenavn: Alfabetisk\s
+                                             2. Rigtige navn: Alfabetisk\s
+                                             3. Superkræfter: Alfabetisk\s
+                                             4. Oprindelsesår: ældste først\s
+                                             5. Race: Mennesker øverst\s
+                                             6. Styrke: Stærkeste øverst\s
+                                            \s""");
                                     System.out.println("Select the first attribute: ");
                                     int choice1 = keyboard.nextInt();
                                     keyboard.nextLine();
