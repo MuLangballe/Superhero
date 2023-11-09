@@ -1,13 +1,24 @@
+package domain_model;
+
+import datasource.FileHandler;
+import java.io.File;
 import java.util.ArrayList;
 
 public class Database {
 
-    FileHandler fh = new FileHandler();
-    ArrayList<Superhero> superheroes = fh.loadAllSuperheroes();
+    File CSVPath;
+    FileHandler fh;
+    ArrayList<Superhero> superheroes;
+
+    public Database(File CSVPath){
+        this.CSVPath = CSVPath;
+        fh = new FileHandler();
+        superheroes = fh.loadAllSuperheroes(CSVPath);
+    }
 
     public void createSuperhero(String name, String realName, String superPower, int yearCreated, boolean isHuman, int strength) {
         superheroes.add(new Superhero(name, realName, superPower, yearCreated, isHuman, strength));
-        fh.saveListSuperHeroes(superheroes);
+        fh.saveListSuperHeroes(superheroes, CSVPath);
     }
 
     public ArrayList<Superhero> findSuperhero(String superhero) {
@@ -20,22 +31,15 @@ public class Database {
         return results;
     }
 
-
     public ArrayList<Superhero> seeAllHeroes() {
-
-//        for (Superhero i: fh.loadAllSuperheroes()) {
-//        if (fh.loadAllSuperheroes() != null){
-//            superheroes.add(i);
-//        }
-//        }
         return superheroes;
     }
 
     public boolean deleteSuperhero(String superheroName){
         for (Superhero superhero : superheroes) {
-            if (superhero.getName().toLowerCase().equals(superheroName.toLowerCase())) {
+            if (superhero.getName().equalsIgnoreCase(superheroName)) {
                 superheroes.remove(superhero);
-                fh.saveListSuperHeroes(superheroes);
+                fh.saveListSuperHeroes(superheroes, CSVPath);
                 return true;
             }
         }

@@ -1,18 +1,20 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
+package user_interface;
+
+import domain_model.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 import java.util.*;
 
 public class UserInterface {
-
-    private Controller controller;
+    private final Controller controller;
 
     public UserInterface(Controller controller) {
         this.controller = controller;
     }
 
     Scanner keyboard = new Scanner(System.in);
-
 
     public void startProgram() {
         int menuChoice;
@@ -21,14 +23,16 @@ public class UserInterface {
         //TODO: (nice to do) ændre sproget til engelsk
 
         do {
-            System.out.println("Velkommen til SUPERHERO UNIVERSET. \n " +
-                    "1. Opret superhelt \n " +
-                    "2. Se liste af superhelte \n " +
-                    "3. Søg efter superhelt \n " +
-                    "4. Rediger eksistrende superhelt \n " +
-                    "5. Slet superhelt \n " +
-                    "6. Sorter din liste af superhelte \n" +
-                    "9. Afslut");
+            System.out.println("""
+                    Velkommen til SUPERHERO UNIVERSET.\s
+                     1. Opret superhelt\s
+                     2. Se liste af superhelte\s
+                     3. Søg efter superhelt\s
+                     4. Rediger eksistrende superhelt\s
+                     5. Slet superhelt\s
+                     6. Sortér din liste efter ét parameter\s
+                     7. Sortér din liste efter to parametre\s
+                     9. Afslut""");
             while (!keyboard.hasNextInt()) {
                 String text = keyboard.next();
                 System.out.println("'" + text + "'" + " er ikke et gyldigt tal. Prøv igen.");
@@ -132,7 +136,7 @@ public class UserInterface {
                     } else {
                         superheroToEdit = resultsToEdit.get(0);
                     }
-                    if (resultsToEdit != null) {
+                    if (!resultsToEdit.isEmpty()) {
                         System.out.println("Rediger information. Tryk ENTER hvis information ikke skal redigeres.");
                         String newValue;
                         System.out.println("Navn: " + superheroToEdit.getName());
@@ -182,14 +186,16 @@ public class UserInterface {
                     break;
 
                 case 6:
-                    System.out.println("Hvilken parameter vil du sortere listen efter? \n" +
-                            "1. Superheltenavn: Alfabetisk \n " +
-                            "2. Rigtige navn: Alfabetisk \n " +
-                            "3. Superkræfter: Alfabetisk \n " +
-                            "4. Oprindelsesår: ældste først \n " +
-                            "5. Race: Mennesker øverst \n " +
-                            "6. Styrke: Stærkeste øverst \n " +
-                            "7. Sorter efter 2 parametre \n");
+                    System.out.println("""
+                            Hvilken parameter vil du sortere listen efter?\s
+                            1. Superheltenavn: Alfabetisk\s
+                             2. Rigtige navn: Alfabetisk\s
+                             3. Superkræfter: Alfabetisk\s
+                             4. Oprindelsesår: ældste først\s
+                             5. Race: Mennesker øverst\s
+                             6. Styrke: Stærkeste øverst\s
+                             7. Sorter efter 2 parametre\s
+                            """);
 
                     int menuChoice2;
                     menuChoice2 = keyboard.nextInt();
@@ -236,6 +242,7 @@ public class UserInterface {
                             }
                             break;
 
+
                         case 6:
                             Collections.sort(controller.seeAllHeroes(), new StrengthComparator().reversed());
                             for (Superhero superhero : controller.seeAllHeroes()) {
@@ -243,45 +250,45 @@ public class UserInterface {
                                 controller.saveListOfSuperheroes(controller.seeAllHeroes());
                             }
                             break;
-
-                        case 7:
-
-                                    System.out.println("Which two attributes do you want to sort by? " +
-                                    "1. Superheltenavn: Alfabetisk \n " +
-                                    "2. Rigtige navn: Alfabetisk \n " +
-                                    "3. Superkræfter: Alfabetisk \n " +
-                                    "4. Oprindelsesår: ældste først \n " +
-                                    "5. Race: Mennesker øverst \n " +
-                                    "6. Styrke: Stærkeste øverst \n ");
-                                    System.out.println("Select the first attribute: ");
-                                    int choice1 = keyboard.nextInt();
-                                    keyboard.nextLine();
-                                    System.out.println("Select the 2nd attribute:");
-                                    int choice2 = keyboard.nextInt();
-                                    keyboard.nextLine();
-
-                                    Map<Integer, Comparator<Superhero>> sortByAttributes = new HashMap<>(); //Map <De her skal være java klasse den læser på. Det må ikke være primitive typer såsom double f.eks long, int, double. Brug java wrapper klasses Integet og String f.eks>
-
-                                    sortByAttributes.put(1, new NameComparator());
-                                    sortByAttributes.put(2, new RealNameComparator());
-                                    sortByAttributes.put(3, new SuperpowerComparator());
-                                    sortByAttributes.put(4, new YearComparator());
-                                    sortByAttributes.put(5, new IsHumanComparator().reversed());
-                                    sortByAttributes.put(6, new StrengthComparator().reversed());
-
-
-                                    Comparator<Superhero> customComparator = sortByAttributes.get(choice1).thenComparing(sortByAttributes.get(choice2));
-
-                                    Collections.sort(controller.seeAllHeroes(), customComparator);
-                                    for (Superhero superhero : controller.seeAllHeroes()) {
-                                        System.out.println(superhero);
-                                        controller.saveListOfSuperheroes(controller.seeAllHeroes());
-                                    }
-                                break;
-                            }
                     }
-            } while(menuChoice !=9);
-        }
-    }
+
+                case 7:
+                    System.out.println("""
+                            Which two attributes do you want to sort by? \s
+                             1. Superheltenavn: Alfabetisk\s
+                             2. Rigtige navn: Alfabetisk\s
+                             3. Superkræfter: Alfabetisk\s
+                             4. Oprindelsesår: ældste først\s
+                             5. Race: Mennesker øverst\s
+                             6. Styrke: Stærkeste øverst\s
+                            \s""");
+                    System.out.println("Select the first attribute: ");
+                    int choice1 = keyboard.nextInt();
+                    keyboard.nextLine();
+                    System.out.println("Select the 2nd attribute:");
+                    int choice2 = keyboard.nextInt();
+                    keyboard.nextLine();
+
+                    Map<Integer, Comparator<Superhero>> sortByAttributes = new HashMap<>(); //Map <De her skal være java klasse den læser på. Det må ikke være primitive typer såsom double f.eks long, int, double. Brug java wrapper klasses Integet og String f.eks>
+
+                    sortByAttributes.put(1, new NameComparator());
+                    sortByAttributes.put(2, new RealNameComparator());
+                    sortByAttributes.put(3, new SuperpowerComparator());
+                    sortByAttributes.put(4, new YearComparator());
+                    sortByAttributes.put(5, new IsHumanComparator().reversed());
+                    sortByAttributes.put(6, new StrengthComparator().reversed());
+
+                    Comparator<Superhero> customComparator = sortByAttributes.get(choice1).thenComparing(sortByAttributes.get(choice2));
+
+                    Collections.sort(controller.seeAllHeroes(), customComparator);
+                    for (Superhero superhero : controller.seeAllHeroes()) {
+                        System.out.println(superhero);
+                        controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                    }
+                    break;
+            }
+    } while(menuChoice !=9);
+}
+}
 
 

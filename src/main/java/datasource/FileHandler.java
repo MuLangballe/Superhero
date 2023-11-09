@@ -1,3 +1,5 @@
+package datasource;
+import domain_model.Superhero;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,16 +10,12 @@ import java.util.Scanner;
 
 public class FileHandler {
 
-
-    private final File file = new File("SuperheroList.csv");
-
-
-    public ArrayList<Superhero> loadAllSuperheroes() {
+    public ArrayList<Superhero> loadAllSuperheroes(File CSVPath) {
         ArrayList<Superhero> superheroes = new ArrayList<>();
         Scanner sc;
         try {
-            sc = new Scanner(file, StandardCharsets.ISO_8859_1);
-            //sc.nextLine();
+            sc = new Scanner(CSVPath, StandardCharsets.ISO_8859_1);
+            //sc.nextLine(); //
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
@@ -45,8 +43,7 @@ public class FileHandler {
         //sc.close();
         return superheroes;
     }
-
-    public void saveListSuperHeroes(ArrayList<Superhero> superheroes) {
+    public void saveListSuperHeroes(ArrayList<Superhero> superheroes, File file) {
 
         try (PrintStream output = new PrintStream(file)) {
             for (Superhero superhero : superheroes) {
@@ -57,7 +54,7 @@ public class FileHandler {
                         + superhero.isHuman() + ";"
                         + superhero.getStrength()
                 );
-            } output.close();
+            }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

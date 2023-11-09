@@ -1,19 +1,25 @@
+package domain_model;
+
+import datasource.FileHandler;
+
+import java.io.File;
 import java.util.ArrayList;
 
 public class Controller {
-    private Database database;
-    private FileHandler fh;
-
+    private final Database database;
+    private final FileHandler fh;
+    File CSVPath;
 
     public Controller(){
-        database = new Database();
+        CSVPath = new File("SuperheroList.csv");
+        database = new Database(CSVPath);
         fh = new FileHandler();
     }
+
 
     public void createSuperhero(String name, String realname, String superpower, int yearCreated, boolean isHuman, int strength){
         database.createSuperhero(name, realname, superpower, yearCreated, isHuman, strength);
     }
-
 
     public boolean deleteSuperhero(String superheroName){
         return database.deleteSuperhero(superheroName);
@@ -27,11 +33,12 @@ public class Controller {
         return database.seeAllHeroes();
     }
 
-    public ArrayList<Superhero> loadAllSuperhero(){
+    //TODO overvej om den skal fjernes:
+/*    public ArrayList<Superhero> loadAllSuperhero(){
         return fh.loadAllSuperheroes();
-    }
+    }*/
 
     public void saveListOfSuperheroes(ArrayList<Superhero> superheroes) {
-        fh.saveListSuperHeroes(superheroes);
+        fh.saveListSuperHeroes(superheroes, CSVPath);
     }
 }

@@ -1,3 +1,5 @@
+package domain_model;
+
 import java.util.Comparator;
 
 public class YearComparator implements Comparator<Superhero> {
