@@ -2,6 +2,8 @@ import datasource.FileHandler;
 import domain_model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import user_interface.UserInterface;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -147,6 +149,36 @@ class DatabaseTest {
         assertEquals(3000, testSuperheroes.get(3).getStrength());
     }
 
+@Test
+void sortByAttributes(){
+
+int choice1 = 1; //svarer til Name attribut
+int choice6 = 6; //svarer til Strength attribut
+
+
+    Map<Integer, Comparator<Superhero>>sortByAttributes = new HashMap<>(); //Opretter et map som paire superhero med navn og strength.reversed
+    sortByAttributes.put(1, new NameComparator());
+    sortByAttributes.put(6, new StrengthComparator().reversed());
+
+Comparator<Superhero> customComparator = sortByAttributes.get(choice1).thenComparing(sortByAttributes.get(choice6)); //prioriteringssortering efter navn og så strength
+Collections.sort(db.viewSuperheroes(), customComparator); //samemenligner superheltene med customComparator
+
+List<Superhero> sortedSuperheroes = db.viewSuperheroes();
+
+assertEquals("Spin", sortedSuperheroes.get(2).getName());
+assertEquals("Superman", sortedSuperheroes.get(3).getName());
+assertEquals("Batman", sortedSuperheroes.get(0).getName());
+assertEquals("Spiderman", sortedSuperheroes.get(1).getName());
+
+assertEquals(1770, sortedSuperheroes.get(2).getStrength());
+assertEquals(2330, sortedSuperheroes.get(3).getStrength());
+assertEquals(3000, sortedSuperheroes.get(0).getStrength());
+assertEquals(1700, sortedSuperheroes.get(1).getStrength());
+
+
+
+
+}
     //    @Test
 //    void editSuperhero() {
 //        // arrange
