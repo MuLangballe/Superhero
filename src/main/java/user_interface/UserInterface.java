@@ -18,9 +18,6 @@ public class UserInterface {
 
     public void startProgram() {
         int menuChoice;
-        //controller.loadAllSuperhero();
-
-        //TODO: (nice to do) ændre sproget til engelsk
 
         do {
             System.out.println("""
@@ -60,11 +57,11 @@ public class UserInterface {
                     int superHeroYearCreated = keyboard.nextInt();
                     keyboard.nextLine();
 
-                    System.out.println("Er superhelten et menneske? [j/n]");
+                    System.out.println("Er superhelten et menneske? [y/n]");
                     char isHumanInput = keyboard.next().charAt(0);
                     boolean isSuperheroHuman = true;
                     switch (isHumanInput) {
-                        case 'j' -> {
+                        case 'y' -> {
                         }
                         case 'n' -> isSuperheroHuman = false;
                         default -> System.out.println("Ugyldigt input.");
@@ -121,7 +118,7 @@ public class UserInterface {
                         System.out.println("Vælg superhelt: ");
                         int count = 1;
                         for (Superhero sh : resultsToEdit) {
-                            System.out.println(count++ +
+                            System.out.println(count++ + " " +
                                     sh.getName() + " \n " +
                                     sh.getRealName() + " \n " +
                                     sh.getSuperPower() + " \n " +
@@ -158,6 +155,13 @@ public class UserInterface {
                         newValue = keyboard.nextLine();
                         if (!newValue.isEmpty()) {
                             superheroToEdit.setYearCreated(Integer.parseInt(newValue));
+                        }
+                        System.out.println("Is the superhero human?: [y/n]" + superheroToEdit.getIsHuman());
+                        newValue = keyboard.nextLine();
+                        if (newValue == "y") {
+                            superheroToEdit.setHuman(true);
+                        } else if (newValue == "n") {
+                            superheroToEdit.setHuman(false);
                         }
                         System.out.println("Styrke: " + superheroToEdit.getStrength());
                         newValue = keyboard.nextLine();

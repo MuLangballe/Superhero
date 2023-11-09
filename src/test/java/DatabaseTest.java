@@ -39,7 +39,7 @@ class DatabaseTest {
                         + superhero.getRealName() + ";"
                         + superhero.getSuperPower() + ";"
                         + superhero.getYearCreated() + ";"
-                        + superhero.isHuman() + ";"
+                        + superhero.getIsHuman() + ";"
                         + superhero.getStrength()
                 );
             }
