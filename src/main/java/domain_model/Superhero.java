@@ -20,12 +20,12 @@ public class Superhero {
 
     @Override
     public String toString() {
-        return  "Superheltenavn: '" + name + '\'' +
-                ", Virkelige navn: '" + realName + '\'' +
-                ", Superkraft: '" + superPower + '\'' +
-                ", Oprindelsesår: " + yearCreated +
-                ", Er menneske: " + isHumanFormatter(isHuman) +
-                ", Styrke: " + strength;
+        return  "Superhero name: '" + name + '\'' +
+                ", Real name: '" + realName + '\'' +
+                ", Superpower: '" + superPower + '\'' +
+                ", Origin: " + yearCreated +
+                ", is the superhero human?: " + isHumanFormatter(isHuman) +
+                ", Strength: " + strength;
     }
 
     public String isHumanFormatter(boolean isHuman){

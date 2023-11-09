@@ -59,7 +59,7 @@ public class UserInterface {
                     int superHeroYearCreated = keyboard.nextInt();
                     keyboard.nextLine();
 
-                    System.out.println("Is your superhero a human? [j/n]");
+                    System.out.println("Is your superhero a human? [y/n]");
                     char isHumanInput = keyboard.next().charAt(0);
                     boolean isSuperheroHuman = true;
                     switch (isHumanInput) {
@@ -144,21 +144,33 @@ public class UserInterface {
                         if (!newValue.isEmpty()) {
                             superheroToEdit.setName(newValue);
                         }
+
                         System.out.println("Real name: " + superheroToEdit.getRealName());
                         newValue = keyboard.nextLine();
                         if (!newValue.isEmpty()) {
                             superheroToEdit.setRealName(newValue);
                         }
+
                         System.out.println("Superpower: " + superheroToEdit.getSuperPower());
                         newValue = keyboard.nextLine();
                         if (!newValue.isEmpty()) {
                             superheroToEdit.setSuperPower(newValue);
                         }
+
                         System.out.println("Origin: " + superheroToEdit.getYearCreated());
                         newValue = keyboard.nextLine();
                         if (!newValue.isEmpty()) {
                             superheroToEdit.setYearCreated(Integer.parseInt(newValue));
                         }
+
+                        System.out.println("is the superhero human?: [y/n] " + superheroToEdit.getIsHuman());
+                        newValue = keyboard.nextLine();
+                        if(newValue == "y"){
+                            superheroToEdit.setHuman(true);
+                        } else if (newValue == "n") {
+                            superheroToEdit.setHuman(false);
+                        }
+
                         System.out.println("Strength: " + superheroToEdit.getStrength());
                         newValue = keyboard.nextLine();
                         if (!newValue.isEmpty()) {
