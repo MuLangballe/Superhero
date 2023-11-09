@@ -18,18 +18,21 @@ public class UserInterface {
 
     public void startProgram() {
         int menuChoice;
+        //controller.loadAllSuperhero();
+
+        //TODO: (nice to do) ændre sproget til engelsk
 
         do {
             System.out.println("""
-                    Velkommen til SUPERHERO UNIVERSET.\s
-                     1. Opret superhelt\s
-                     2. Se liste af superhelte\s
-                     3. Søg efter superhelt\s
-                     4. Rediger eksistrende superhelt\s
-                     5. Slet superhelt\s
-                     6. Sortér din liste efter ét parameter\s
-                     7. Sortér din liste efter to parametre\s
-                     9. Afslut""");
+                    Welcome to your superhero UNIVERSE.\s
+                     1. Add superhero\s
+                     2. See list of superheroes\s
+                     3. Search for a superhero\s
+                     4. Edit added superhero\s
+                     5. Delete superhero\s
+                     6. Sort your superhero list after a specified attribute\s
+                     7. Sort your superhero list after a two specified attributes\s
+                     9. Exit program""");
             while (!keyboard.hasNextInt()) {
                 String text = keyboard.next();
                 System.out.println("'" + text + "'" + " er ikke et gyldigt tal. Prøv igen.");
@@ -40,37 +43,37 @@ public class UserInterface {
 
             switch (menuChoice) {
                 case 1:
-                    System.out.println("Tilføj superhelt: indtast superheltens navn: ");
+                    System.out.println("Add the superheroe's name: ");
                     String superHeroName = keyboard.nextLine();
 
-                    System.out.println("Indtast superheltens RIGTIGE navn: ");
+                    System.out.println("Type the superheroe's real name: ");
                     String superHeroRealName = keyboard.nextLine();
 
-                    System.out.println("Indtast superheltens superkraft: ");
+                    System.out.println("Your superheroe's superpower: ");
                     String superHeroSuperPower = keyboard.nextLine();
 
-                    System.out.println("Indtast året superhelten blev skabt: ");
+                    System.out.println("The year your superhero came to existence: ");
                     while (!keyboard.hasNextInt()) {
                         String text = keyboard.next();
-                        System.out.println("'" + text + "'" + " er ikke et gyldigt tal. Prøv igen.");
+                        System.out.println("'" + text + "'" + " not a valid number. Try again");
                     }
                     int superHeroYearCreated = keyboard.nextInt();
                     keyboard.nextLine();
 
-                    System.out.println("Er superhelten et menneske? [y/n]");
+                    System.out.println("Is your superhero a human? [j/n]");
                     char isHumanInput = keyboard.next().charAt(0);
                     boolean isSuperheroHuman = true;
                     switch (isHumanInput) {
                         case 'y' -> {
                         }
                         case 'n' -> isSuperheroHuman = false;
-                        default -> System.out.println("Ugyldigt input.");
+                        default -> System.out.println("Invalid input.");
                     }
 
-                    System.out.println("Hvor stærk er superhelten(i tal)?");
+                    System.out.println("Your superheroe's power level (in numbers)?");
                     while (!keyboard.hasNextInt()) {
                         String text = keyboard.next();
-                        System.out.println("'" + text + "'" + " er ikke et gyldigt tal. Prøv igen.");
+                        System.out.println("'" + text + "'" + " not a valid number. Try again");
                     }
                     int superHeroStrength = keyboard.nextInt();
 
@@ -79,7 +82,7 @@ public class UserInterface {
                     break;
 
                 case 2:
-                    System.out.println("Liste af superhelte: ");
+                    System.out.println("List of superheroes: ");
                     ArrayList<Superhero> superheroes = controller.viewSuperheroes();
                     for (Superhero superhero : superheroes) {
                         System.out.println(superhero);
@@ -87,12 +90,12 @@ public class UserInterface {
                     break;
 
                 case 3:
-                    System.out.println("indtast søgning: ");
+                    System.out.println("Enter search: ");
                     String searchSuperhero = keyboard.nextLine();
                     ArrayList<Superhero> searchResults = controller.findSuperhero(searchSuperhero);
 
                     if (searchResults.isEmpty()) {
-                        System.out.println("Kunne ikke finde superhelten");
+                        System.out.println("Error: superhero not found");
                     } else {
                         for (Superhero superhero : searchResults) {
                             System.out.println(superhero);
@@ -101,21 +104,21 @@ public class UserInterface {
                     break;
 
                 case 4:
-                    System.out.println("Indtast superhelten du ønsker at redigere: ");
+                    System.out.println("Which superhero do you want to edit: ");
                     String brugerInput = keyboard.nextLine();
 
                     ArrayList<Superhero> resultsToEdit = controller.findSuperhero(brugerInput);
                     Superhero superheroToEdit;
 
                     while (resultsToEdit.isEmpty()) {
-                        System.out.println("Superhelt ikke fundet!");
-                        System.out.println("Indtast superhelten du ønsker at redigere: ");
+                        System.out.println("Superhero not found!");
+                        System.out.println("Enter the superhero you want to edit: ");
                         String newSearch = keyboard.nextLine();
                         resultsToEdit = controller.findSuperhero(newSearch);
                     }
 
                     if (resultsToEdit.size() > 1) {
-                        System.out.println("Vælg superhelt: ");
+                        System.out.println("Choose superhero: ");
                         int count = 1;
                         for (Superhero sh : resultsToEdit) {
                             System.out.println(count++ + " " +
@@ -135,14 +138,14 @@ public class UserInterface {
                         superheroToEdit = resultsToEdit.get(0);
                     }
                     if (!resultsToEdit.isEmpty()) {
-                        System.out.println("Rediger information. Tryk ENTER hvis information ikke skal redigeres.");
+                        System.out.println("Edit information. Press enter to continue.");
                         String newValue;
-                        System.out.println("Navn: " + superheroToEdit.getName());
+                        System.out.println("Name: " + superheroToEdit.getName());
                         newValue = keyboard.nextLine();
                         if (!newValue.isEmpty()) {
                             superheroToEdit.setName(newValue);
                         }
-                        System.out.println("Rigtige navn: " + superheroToEdit.getRealName());
+                        System.out.println("Real name: " + superheroToEdit.getRealName());
                         newValue = keyboard.nextLine();
                         if (!newValue.isEmpty()) {
                             superheroToEdit.setRealName(newValue);
@@ -152,31 +155,24 @@ public class UserInterface {
                         if (!newValue.isEmpty()) {
                             superheroToEdit.setSuperPower(newValue);
                         }
-                        System.out.println("Oprindelsesår: " + superheroToEdit.getYearCreated());
+                        System.out.println("Origin: " + superheroToEdit.getYearCreated());
                         newValue = keyboard.nextLine();
                         if (!newValue.isEmpty()) {
                             superheroToEdit.setYearCreated(Integer.parseInt(newValue));
                         }
-                        System.out.println("Is the superhero human?: [y/n]" + superheroToEdit.getIsHuman());
-                        newValue = keyboard.nextLine();
-                        if (newValue == "y") {
-                            superheroToEdit.setHuman(true);
-                        } else if (newValue == "n") {
-                            superheroToEdit.setHuman(false);
-                        }
-                        System.out.println("Styrke: " + superheroToEdit.getStrength());
+                        System.out.println("Strength: " + superheroToEdit.getStrength());
                         newValue = keyboard.nextLine();
                         if (!newValue.isEmpty()) {
                             superheroToEdit.setStrength(Integer.parseInt(newValue));
                         }
-                        System.out.println(superheroToEdit.getName() + " er opdateret.");
+                        System.out.println(superheroToEdit.getName() + " has been updated.");
                     }
                     controller.saveListOfSuperheroes(controller.viewSuperheroes());
 
                     break;
 
                 case 5:
-                    System.out.println("Indtast helten du ønsker at slette: ");
+                    System.out.println("Type the superhero you want to begone: ");
                     ArrayList<Superhero> superherolist = controller.viewSuperheroes();
                     for (Superhero superhero : superherolist) {
                         System.out.println(superhero);
@@ -184,22 +180,22 @@ public class UserInterface {
                     String superheroToDelete = keyboard.nextLine();
                     boolean succesDelete = controller.deleteSuperhero(superheroToDelete);
                     if (succesDelete) {
-                        System.out.println(superheroToDelete + " blev slettet");
+                        System.out.println(superheroToDelete + " has been terminated from your superhero UNIVERSE");
                     } else {
-                        System.out.println("Der er ingen superhelt der kan slettes");
+                        System.out.println("No superhero has been deleted");
                     }
                     break;
 
                 case 6:
                     System.out.println("""
-                            Hvilken parameter vil du sortere listen efter?\s
-                            1. Superheltenavn: Alfabetisk\s
-                             2. Rigtige navn: Alfabetisk\s
-                             3. Superkræfter: Alfabetisk\s
-                             4. Oprindelsesår: ældste først\s
-                             5. Race: Mennesker øverst\s
-                             6. Styrke: Stærkeste øverst\s
-                             7. Sorter efter 2 parametre\s
+                            Which attribute do you want to sort by?\s
+                            1. Suphero name: Alphabetical\s
+                             2. Real name: Alphabetical\s
+                             3. Superpower: Alphabetical\s
+                             4. Origin: oldest first\s
+                             5. Race: Humans on top\s
+                             6. Strength: Strongest on top\s
+                             7. Sort after two attributes\s
                             """);
 
                     int menuChoice2;
@@ -259,13 +255,14 @@ public class UserInterface {
 
                 case 7:
                     System.out.println("""
-                            Which two attributes do you want to sort by? \s
-                             1. Superheltenavn: Alfabetisk\s
-                             2. Rigtige navn: Alfabetisk\s
-                             3. Superkræfter: Alfabetisk\s
-                             4. Oprindelsesår: ældste først\s
-                             5. Race: Mennesker øverst\s
-                             6. Styrke: Stærkeste øverst\s
+                            Which two attributes do you want to sort by?\s
+                            1. Suphero name: Alphabetical\s
+                             2. Real name: Alphabetical\s
+                             3. Superpower: Alphabetical\s
+                             4. Origin: oldest first\s
+                             5. Race: Humans on top\s
+                             6. Strength: Strongest on top\s
+                             7. Sort after two attributes\s
                             \s""");
                     System.out.println("Select the first attribute: ");
                     int choice1 = keyboard.nextInt();
