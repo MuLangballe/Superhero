@@ -75,12 +75,12 @@ public class UserInterface {
                     int superHeroStrength = keyboard.nextInt();
 
                     controller.createSuperhero(superHeroName, superHeroRealName, superHeroSuperPower, superHeroYearCreated, isSuperheroHuman, superHeroStrength);
-                    controller.seeAllHeroes();
+                    controller.viewSuperheroes();
                     break;
 
                 case 2:
                     System.out.println("Liste af superhelte: ");
-                    ArrayList<Superhero> superheroes = controller.seeAllHeroes();
+                    ArrayList<Superhero> superheroes = controller.viewSuperheroes();
                     for (Superhero superhero : superheroes) {
                         System.out.println(superhero);
                     }
@@ -170,13 +170,13 @@ public class UserInterface {
                         }
                         System.out.println(superheroToEdit.getName() + " er opdateret.");
                     }
-                    controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                    controller.saveListOfSuperheroes(controller.viewSuperheroes());
 
                     break;
 
                 case 5:
                     System.out.println("Indtast helten du ønsker at slette: ");
-                    ArrayList<Superhero> superherolist = controller.seeAllHeroes();
+                    ArrayList<Superhero> superherolist = controller.viewSuperheroes();
                     for (Superhero superhero : superherolist) {
                         System.out.println(superhero);
                     }
@@ -207,51 +207,51 @@ public class UserInterface {
 
                     switch (menuChoice2) {
                         case 1:
-                            Collections.sort(controller.seeAllHeroes(), new NameComparator());
-                            for (Superhero superhero : controller.seeAllHeroes()) {
+                            Collections.sort(controller.viewSuperheroes(), new NameComparator());
+                            for (Superhero superhero : controller.viewSuperheroes()) {
                                 System.out.println(superhero);
-                                controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                                controller.saveListOfSuperheroes(controller.viewSuperheroes());
                             }
                             break;
 
                         case 2:
-                            Collections.sort(controller.seeAllHeroes(), new RealNameComparator());
-                            for (Superhero superhero : controller.seeAllHeroes()) {
+                            Collections.sort(controller.viewSuperheroes(), new RealNameComparator());
+                            for (Superhero superhero : controller.viewSuperheroes()) {
                                 System.out.println(superhero);
-                                controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                                controller.saveListOfSuperheroes(controller.viewSuperheroes());
                             }
                             break;
 
                         case 3:
-                            Collections.sort(controller.seeAllHeroes(), new SuperpowerComparator());
-                            for (Superhero superhero : controller.seeAllHeroes()) {
+                            Collections.sort(controller.viewSuperheroes(), new SuperpowerComparator());
+                            for (Superhero superhero : controller.viewSuperheroes()) {
                                 System.out.println(superhero);
-                                controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                                controller.saveListOfSuperheroes(controller.viewSuperheroes());
                             }
                             break;
 
                         case 4:
-                            Collections.sort(controller.seeAllHeroes(), new YearComparator());
-                            for (Superhero superhero : controller.seeAllHeroes()) {
+                            Collections.sort(controller.viewSuperheroes(), new YearComparator());
+                            for (Superhero superhero : controller.viewSuperheroes()) {
                                 System.out.println(superhero);
-                                controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                                controller.saveListOfSuperheroes(controller.viewSuperheroes());
                             }
                             break;
 
                         case 5:
-                            Collections.sort(controller.seeAllHeroes(), new IsHumanComparator().reversed());
-                            for (Superhero superhero : controller.seeAllHeroes()) {
+                            Collections.sort(controller.viewSuperheroes(), new IsHumanComparator().reversed());
+                            for (Superhero superhero : controller.viewSuperheroes()) {
                                 System.out.println(superhero);
-                                controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                                controller.saveListOfSuperheroes(controller.viewSuperheroes());
                             }
                             break;
 
 
                         case 6:
-                            Collections.sort(controller.seeAllHeroes(), new StrengthComparator().reversed());
-                            for (Superhero superhero : controller.seeAllHeroes()) {
+                            Collections.sort(controller.viewSuperheroes(), new StrengthComparator().reversed());
+                            for (Superhero superhero : controller.viewSuperheroes()) {
                                 System.out.println(superhero);
-                                controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                                controller.saveListOfSuperheroes(controller.viewSuperheroes());
                             }
                             break;
                     }
@@ -284,10 +284,10 @@ public class UserInterface {
 
                     Comparator<Superhero> customComparator = sortByAttributes.get(choice1).thenComparing(sortByAttributes.get(choice2));
 
-                    Collections.sort(controller.seeAllHeroes(), customComparator);
-                    for (Superhero superhero : controller.seeAllHeroes()) {
+                    Collections.sort(controller.viewSuperheroes(), customComparator);
+                    for (Superhero superhero : controller.viewSuperheroes()) {
                         System.out.println(superhero);
-                        controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                        controller.saveListOfSuperheroes(controller.viewSuperheroes());
                     }
                     break;
             }

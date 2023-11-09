@@ -15,7 +15,6 @@ class DatabaseTest {
     int tal;
     FileHandler fh = new FileHandler();
     Database db;
-    Scanner sc;
     File testfile;
     ArrayList<Superhero> testSuperheroes = new ArrayList<>();
 
@@ -47,6 +46,7 @@ class DatabaseTest {
             throw new RuntimeException(e);
         }
         db = new Database(testfile);
+
     }
     
     @Test 
@@ -58,8 +58,8 @@ class DatabaseTest {
 
     @Test
     void createSuperhero() {
-        int startSize = loadSuperheroTest().size();
-        db.createSuperhero("Superman", "Clark", "Styrke", 1940, false, 2330);
+        int startSize = db.getSize();
+        db.createSuperhero("Dronning Margrethe", "Margrethe", "Kæderygning", 1901, false, 2330);
         int expectedDBSize = startSize + 1;
         int actualSize = db.getSize();
         assertEquals(expectedDBSize, actualSize);
