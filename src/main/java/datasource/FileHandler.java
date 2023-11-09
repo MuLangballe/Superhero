@@ -1,5 +1,7 @@
 package datasource;
+
 import domain_model.Superhero;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -43,9 +45,10 @@ public class FileHandler {
         //sc.close();
         return superheroes;
     }
-    public void saveListSuperHeroes(ArrayList<Superhero> superheroes, File file) {
 
-        try (PrintStream output = new PrintStream(file)) {
+    public void saveListSuperHeroes(ArrayList<Superhero> superheroes, File CSVPath) {
+
+        try (PrintStream output = new PrintStream(CSVPath)) {
             for (Superhero superhero : superheroes) {
                 output.println(superhero.getName() + ";"
                         + superhero.getRealName() + ";"

@@ -287,8 +287,8 @@ public class UserInterface {
                     }
                     break;
             }
-    } while(menuChoice !=9);
-}
+        } while (menuChoice != 9);
+    }
 }
 
 
