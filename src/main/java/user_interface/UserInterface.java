@@ -18,9 +18,8 @@ public class UserInterface {
 
     public void startProgram() {
         int menuChoice;
-        //controller.loadAllSuperhero();
 
-        //TODO: (nice to do) ændre sproget til engelsk
+
 
         do {
             System.out.println("""
@@ -31,11 +30,11 @@ public class UserInterface {
                      4. Edit added superhero\s
                      5. Delete superhero\s
                      6. Sort your superhero list after a specified attribute\s
-                     7. Sort your superhero list after a two specified attributes\s
+                     7. Sort your superhero list after two specified attributes\s
                      9. Exit program""");
             while (!keyboard.hasNextInt()) {
                 String text = keyboard.next();
-                System.out.println("'" + text + "'" + " er ikke et gyldigt tal. Prøv igen.");
+                System.out.println("'" + text + "'" + " not a valid number, try again");
             }
             menuChoice = keyboard.nextInt();
             keyboard.nextLine();
