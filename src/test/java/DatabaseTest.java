@@ -84,7 +84,7 @@ class DatabaseTest {
     @Test
     void viewSuperheroes() {
         int expectedSize = 4;
-        ArrayList<Superhero> actualSize = db.seeAllHeroes();
+        ArrayList<Superhero> actualSize = db.viewSuperheroes();
         assertEquals(expectedSize, actualSize.size());
     }
 

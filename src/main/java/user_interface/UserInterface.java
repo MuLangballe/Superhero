@@ -123,6 +123,7 @@ public class UserInterface {
                                     sh.getRealName() + " \n " +
                                     sh.getSuperPower() + " \n " +
                                     sh.getYearCreated() + " \n " +
+                                    sh.getIsHuman() + "\n" +
                                     sh.getStrength());
                         }
                         int superheroChoice = keyboard.nextInt();

@@ -31,7 +31,7 @@ public class Database {
         return results;
     }
 
-    public ArrayList<Superhero> seeAllHeroes() {
+    public ArrayList<Superhero> viewSuperheroes() {
         return superheroes;
     }
 

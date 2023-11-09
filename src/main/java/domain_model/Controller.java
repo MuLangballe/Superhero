@@ -29,8 +29,8 @@ public class Controller {
         return database.findSuperhero(superhero);
     }
 
-    public ArrayList<Superhero> seeAllHeroes(){
-        return database.seeAllHeroes();
+    public ArrayList<Superhero> viewSuperheroes(){
+        return database.viewSuperheroes();
     }
 
     //TODO overvej om den skal fjernes:
