@@ -1,18 +1,17 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class UserInterface {
 
-        private Controller controller;
-        public UserInterface (Controller controller){
-            this.controller = controller;
-        }
-        Scanner keyboard = new Scanner(System.in);
+    private Controller controller;
 
+    public UserInterface(Controller controller) {
+        this.controller = controller;
+    }
+
+    Scanner keyboard = new Scanner(System.in);
 
 
     public void startProgram() {
@@ -181,53 +180,108 @@ public class UserInterface {
                         System.out.println("Der er ingen superhelt der kan slettes");
                     }
                     break;
-                    
+
                 case 6:
-                        System.out.println("Hvilken parameter vil du sortere listen efter? \n" +
-                                "1. Superheltenavn: Alfabetisk \n " +
-                                "2. Rigtige navn: Alfabetisk \n " +
-                                "3. Superkræfter: Alfabetisk \n " +
-                                "4. Oprindelsesår: ældste først \n " +
-                                "5. Race: Mennesker øverst \n " +
-                                "6. Styrke: Stærkeste øverst \n ");
+                    System.out.println("Hvilken parameter vil du sortere listen efter? \n" +
+                            "1. Superheltenavn: Alfabetisk \n " +
+                            "2. Rigtige navn: Alfabetisk \n " +
+                            "3. Superkræfter: Alfabetisk \n " +
+                            "4. Oprindelsesår: ældste først \n " +
+                            "5. Race: Mennesker øverst \n " +
+                            "6. Styrke: Stærkeste øverst \n " +
+                            "7. Sorter efter 2 parametre \n");
 
                     int menuChoice2;
                     menuChoice2 = keyboard.nextInt();
                     keyboard.nextLine();
 
-/*                        if (!keyboard.hasNextInt()); {
-                            String text = keyboard.next();
-                            System.out.println("'" + text + "'" + " er ikke et gyldigt tal. Prøv igen.");
-                        } */
+                    switch (menuChoice2) {
+                        case 1:
+                            Collections.sort(controller.seeAllHeroes(), new NameComparator());
+                            for (Superhero superhero : controller.seeAllHeroes()) {
+                                System.out.println(superhero);
+                                controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                            }
+                            break;
+
+                        case 2:
+                            Collections.sort(controller.seeAllHeroes(), new RealNameComparator());
+                            for (Superhero superhero : controller.seeAllHeroes()) {
+                                System.out.println(superhero);
+                                controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                            }
+                            break;
+
+                        case 3:
+                            Collections.sort(controller.seeAllHeroes(), new SuperpowerComparator());
+                            for (Superhero superhero : controller.seeAllHeroes()) {
+                                System.out.println(superhero);
+                                controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                            }
+                            break;
+
+                        case 4:
+                            Collections.sort(controller.seeAllHeroes(), new YearComparator());
+                            for (Superhero superhero : controller.seeAllHeroes()) {
+                                System.out.println(superhero);
+                                controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                            }
+                            break;
+
+                        case 5:
+                            Collections.sort(controller.seeAllHeroes(), new IsHumanComparator().reversed());
+                            for (Superhero superhero : controller.seeAllHeroes()) {
+                                System.out.println(superhero);
+                                controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                            }
+                            break;
+
+                        case 6:
+                            Collections.sort(controller.seeAllHeroes(), new StrengthComparator().reversed());
+                            for (Superhero superhero : controller.seeAllHeroes()) {
+                                System.out.println(superhero);
+                                controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                            }
+                            break;
+
+                        case 7:
+
+                                    System.out.println("Which two attributes do you want to sort by? " +
+                                    "1. Superheltenavn: Alfabetisk \n " +
+                                    "2. Rigtige navn: Alfabetisk \n " +
+                                    "3. Superkræfter: Alfabetisk \n " +
+                                    "4. Oprindelsesår: ældste først \n " +
+                                    "5. Race: Mennesker øverst \n " +
+                                    "6. Styrke: Stærkeste øverst \n ");
+                                    System.out.println("Select the first attribute: ");
+                                    int choice1 = keyboard.nextInt();
+                                    keyboard.nextLine();
+                                    System.out.println("Select the 2nd attribute:");
+                                    int choice2 = keyboard.nextInt();
+                                    keyboard.nextLine();
+
+                                    Map<Integer, Comparator<Superhero>> sortByAttributes = new HashMap<>(); //Map <De her skal være java klasse den læser på. Det må ikke være primitive typer såsom double f.eks long, int, double. Brug java wrapper klasses Integet og String f.eks>
+
+                                    sortByAttributes.put(1, new NameComparator());
+                                    sortByAttributes.put(2, new RealNameComparator());
+                                    sortByAttributes.put(3, new SuperpowerComparator());
+                                    sortByAttributes.put(4, new YearComparator());
+                                    sortByAttributes.put(5, new IsHumanComparator().reversed());
+                                    sortByAttributes.put(6, new StrengthComparator().reversed());
 
 
-                        switch (menuChoice2) {
-                            
+                                    Comparator<Superhero> customComparator = sortByAttributes.get(choice1).thenComparing(sortByAttributes.get(choice2));
 
-                            case 1:
-                                Collections.sort(controller.seeAllHeroes(), new NameComparator());
+                                    Collections.sort(controller.seeAllHeroes(), customComparator);
+                                    for (Superhero superhero : controller.seeAllHeroes()) {
+                                        System.out.println(superhero);
+                                        controller.saveListOfSuperheroes(controller.seeAllHeroes());
+                                    }
                                 break;
-
-
-                            case 2:
-                                Collections.sort(controller.seeAllHeroes(), new RealNameComparator());
-                                for (Superhero superhero: controller.seeAllHeroes()){
-                                    System.out.println(superhero);
-                                }
-
-                                break;
-                        }
-
-
-               // case 9:
-
-
-
-                    // Save all superheroes
-
-            }
-        } while (menuChoice != 9);
+                            }
+                    }
+            } while(menuChoice !=9);
+        }
     }
 
-}
 
