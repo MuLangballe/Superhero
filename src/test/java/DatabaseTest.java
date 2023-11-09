@@ -1,8 +1,8 @@
+import datasource.FileHandler;
 import domain_model.Database;
 import domain_model.Superhero;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
@@ -12,14 +12,15 @@ import java.util.Scanner;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DatabaseTest {
+    int tal;
+    FileHandler fh = new FileHandler();
     Database db;
-    Scanner sc;
     File testfile;
+    ArrayList<Superhero> testSuperheroes = new ArrayList<>();
 
     @BeforeEach
     void setUp() {
         testfile = new File("src/test/java/TestSuperhero.csv");
-        ArrayList<Superhero> testSuperheroes = new ArrayList<>();
 
         Superhero s1 = new Superhero("Spin", "Miles", "Arachnosting", 2020, true, 1770);
         Superhero s2 = new Superhero("Superman", "Clark", "Styrke", 1940, false, 2330);
@@ -37,29 +38,30 @@ class DatabaseTest {
                         + superhero.getRealName() + ";"
                         + superhero.getSuperPower() + ";"
                         + superhero.getYearCreated() + ";"
-                        + superhero.isHuman() + ";"
+                        + superhero.getIsHuman() + ";"
                         + superhero.getStrength()
                 );
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-
         db = new Database(testfile);
+
+    }
+    
+    @Test 
+    void loadAllSuperheroes(){
+        int expectedSize = 4;
+        int actualSize = fh.loadAllSuperheroes(testfile).size();
+        assertEquals(expectedSize, actualSize);
     }
 
     @Test
-    void lol(){
-        assertTrue(true);
-    }
-
-    /*
     void createSuperhero() {
-        int startSize = loadSuperheroTest().size();
-        db.createSuperhero("Superman", "Clark", "Styrke", 1940, false, 2330);
+        int startSize = db.getSize();
+        db.createSuperhero("Dronning Margrethe", "Margrethe", "Kæderygning", 1901, false, 2330);
         int expectedDBSize = startSize + 1;
         int actualSize = db.getSize();
-
         assertEquals(expectedDBSize, actualSize);
     }
 
@@ -68,10 +70,28 @@ class DatabaseTest {
         ArrayList<Superhero> result = db.findSuperhero("Spin");
         int expectedSize = 1;
         int actualSize = result.size();
-        assertEquals(expectedSize, actualSize);*/
+        assertEquals(expectedSize, actualSize);
     }
 
-//    @Test
+    @Test
+    void deleteSuperhero1() {
+        db.deleteSuperhero("Spin");
+        int expectedSize = 3;
+        int actualSize = db.getSize();
+        assertEquals(expectedSize, actualSize);
+    }
+
+    @Test
+    void viewSuperheroes() {
+        int expectedSize = 4;
+        ArrayList<Superhero> actualSize = db.viewSuperheroes();
+        assertEquals(expectedSize, actualSize.size());
+    }
+
+
+
+
+    //    @Test
 //    void editSuperhero() {
 //        // arrange
 //        ArrayList<Superhero> result = db.findSuperhero("Span");
@@ -88,80 +108,8 @@ class DatabaseTest {
 //        assertEquals(expectedSize, actualSize);
 //    }
 
-/*
-    @Test
-    void deleteSuperhero1() {
-        db.deleteSuperhero("Spin");
-        ArrayList<Superhero> result = db.findSuperhero("Spin");
-        assertTrue(result.isEmpty());
-        //forudsætter at findSuperhero virker
-    }
-
-    @Test
-    void seeAllHeroes() {
-        int expectedSize = 4;
-        ArrayList<Superhero> actualSize = db.seeAllHeroes();
-        assertEquals(expectedSize, actualSize.size());
-    }
-
-*/
-
-
-
-/*
-    public ArrayList<Superhero> loadSuperheroTest(){
-        ArrayList<Superhero> testSuperheroes = new ArrayList<>();
-        Scanner keyboard;
-
-        try {
-            keyboard = new Scanner(testfile, StandardCharsets.ISO_8859_1);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Superhero superhero;
-        while (keyboard.hasNext()){
-            String line = keyboard.nextLine();
-            String[] parametre = line.split(";");
-            String name = parametre[0];
-            String realName = parametre[1];
-            String superPowers = parametre[2];
-            String yearCreated = parametre[3];
-            String isHuman = parametre[4];
-            String strength = parametre[5];
-            superhero = new Superhero(
-                    name,
-                    realName,
-                    superPowers,
-                    Integer.parseInt(yearCreated),
-                    Boolean.parseBoolean(isHuman),
-                    Integer.parseInt(strength)
-            );
-
-            testSuperheroes.add(superhero);
-        }
-        keyboard.close();
-        return testSuperheroes;
-
 
     }
-
-    public void saveListOfTestSuperheroes(ArrayList<Superhero> testsuperheroes){
-        try(PrintStream output = new PrintStream(testfile)){
-            for (Superhero superhero : testsuperheroes) {
-                output.println(superhero.getName() + ";"
-                        + superhero.getRealName() + ";"
-                        + superhero.getSuperPower() + ";"
-                        + superhero.getYearCreated() + ";"
-                        + superhero.isHuman() + ";"
-                        + superhero.getStrength()
-                );
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    }
-*/
 
 
 

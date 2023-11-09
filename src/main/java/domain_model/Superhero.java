@@ -28,11 +28,11 @@ public class Superhero {
                 ", Styrke: " + strength;
     }
 
-    private String isHumanFormatter(boolean isHuman){
+    public String isHumanFormatter(boolean isHuman){
         if (isHuman) {
-            return "Ja";
+            return "Yes";
         } else {
-            return "Nej";
+            return "No";
         }
     }
 
@@ -72,12 +72,8 @@ public class Superhero {
         return isHuman;
     }
 
-    public boolean isHuman() {
-        return isHuman;
-    }
-
     public void setHuman(boolean human) {
-        isHuman = human;
+        this.isHuman = human;
     }
 
     public int getStrength() {
