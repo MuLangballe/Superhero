@@ -29,7 +29,7 @@ public class Controller {
         return database.findSuperhero(superhero);
     }
 
-    public ArrayList<Superhero> seeAllHeroes(){
+    public ArrayList<Superhero> viewSuperheroes(){
         return database.seeAllHeroes();
     }
 
