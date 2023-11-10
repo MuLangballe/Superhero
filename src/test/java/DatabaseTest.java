@@ -1,5 +1,6 @@
 import datasource.FileHandler;
 import domain_model.*;
+import net.bytebuddy.implementation.bind.annotation.Super;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import user_interface.UserInterface;
@@ -148,8 +149,7 @@ class DatabaseTest {
         assertEquals(2330, testSuperheroes.get(2).getStrength());
         assertEquals(3000, testSuperheroes.get(3).getStrength());
     }
-
-@Test
+    @Test
 void sortByAttributes(){
 
 int choice1 = 1; //svarer til Name attribut
@@ -174,12 +174,10 @@ assertEquals(1770, sortedSuperheroes.get(2).getStrength());
 assertEquals(2330, sortedSuperheroes.get(3).getStrength());
 assertEquals(3000, sortedSuperheroes.get(0).getStrength());
 assertEquals(1700, sortedSuperheroes.get(1).getStrength());
-
-
-
-
 }
-    //    @Test
+
+
+//    @Test
 //    void editSuperhero() {
 //        // arrange
 //        ArrayList<Superhero> result = db.findSuperhero("Span");
@@ -196,8 +194,7 @@ assertEquals(1700, sortedSuperheroes.get(1).getStrength());
 //        assertEquals(expectedSize, actualSize);
 //    }
 
-
-    }
+}
 
 
 

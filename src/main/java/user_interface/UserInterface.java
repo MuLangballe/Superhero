@@ -20,7 +20,6 @@ public class UserInterface {
         int menuChoice;
 
 
-
         do {
             System.out.print(Colors.YELLOW_BRIGHT);
             System.out.print(Colors.BLUE_BACKGROUND);
