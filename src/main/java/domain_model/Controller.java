@@ -33,10 +33,10 @@ public class Controller {
         return database.viewSuperheroes();
     }
 
-    //TODO overvej om den skal fjernes:
-/*    public ArrayList<Superhero> loadAllSuperhero(){
-        return fh.loadAllSuperheroes();
-    }*/
+    public void printSuperheroes(){
+        database.printSuperheroes();
+    }
+
 
     public void saveListOfSuperheroes(ArrayList<Superhero> superheroes) {
         fh.saveListSuperHeroes(superheroes, CSVPath);

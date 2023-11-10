@@ -22,6 +22,8 @@ public class UserInterface {
 
 
         do {
+            System.out.print(Colors.YELLOW_BRIGHT);
+            System.out.print(Colors.BLUE_BACKGROUND);
             System.out.println("""
                     Welcome to your superhero UNIVERSE.\s
                      1. Add superhero\s
@@ -184,10 +186,7 @@ public class UserInterface {
 
                 case 5:
                     System.out.println("Type the superhero you want to begone: ");
-                    ArrayList<Superhero> superherolist = controller.viewSuperheroes();
-                    for (Superhero superhero : superherolist) {
-                        System.out.println(superhero);
-                    }
+                    controller.printSuperheroes();
                     String superheroToDelete = keyboard.nextLine();
                     boolean succesDelete = controller.deleteSuperhero(superheroToDelete);
                     if (succesDelete) {
@@ -206,7 +205,6 @@ public class UserInterface {
                              4. Origin: oldest first\s
                              5. Race: Humans on top\s
                              6. Strength: Strongest on top\s
-                             7. Sort after two attributes\s
                             """);
 
                     int menuChoice2;
@@ -216,53 +214,42 @@ public class UserInterface {
                     switch (menuChoice2) {
                         case 1:
                             Collections.sort(controller.viewSuperheroes(), new NameComparator());
-                            for (Superhero superhero : controller.viewSuperheroes()) {
-                                System.out.println(superhero);
-                                controller.saveListOfSuperheroes(controller.viewSuperheroes());
-                            }
+                            controller.printSuperheroes();
+                            controller.saveListOfSuperheroes(controller.viewSuperheroes());
                             break;
 
                         case 2:
                             Collections.sort(controller.viewSuperheroes(), new RealNameComparator());
-                            for (Superhero superhero : controller.viewSuperheroes()) {
-                                System.out.println(superhero);
-                                controller.saveListOfSuperheroes(controller.viewSuperheroes());
-                            }
+                            controller.printSuperheroes();
+                            controller.saveListOfSuperheroes(controller.viewSuperheroes());
                             break;
 
                         case 3:
                             Collections.sort(controller.viewSuperheroes(), new SuperpowerComparator());
-                            for (Superhero superhero : controller.viewSuperheroes()) {
-                                System.out.println(superhero);
-                                controller.saveListOfSuperheroes(controller.viewSuperheroes());
-                            }
+                            controller.printSuperheroes();
+                            controller.saveListOfSuperheroes(controller.viewSuperheroes());
                             break;
 
                         case 4:
                             Collections.sort(controller.viewSuperheroes(), new YearComparator());
-                            for (Superhero superhero : controller.viewSuperheroes()) {
-                                System.out.println(superhero);
-                                controller.saveListOfSuperheroes(controller.viewSuperheroes());
-                            }
+                            controller.printSuperheroes();
+                            controller.saveListOfSuperheroes(controller.viewSuperheroes());
                             break;
 
                         case 5:
                             Collections.sort(controller.viewSuperheroes(), new IsHumanComparator().reversed());
-                            for (Superhero superhero : controller.viewSuperheroes()) {
-                                System.out.println(superhero);
-                                controller.saveListOfSuperheroes(controller.viewSuperheroes());
-                            }
+                            controller.printSuperheroes();
+                            controller.saveListOfSuperheroes(controller.viewSuperheroes());
                             break;
-
 
                         case 6:
                             Collections.sort(controller.viewSuperheroes(), new StrengthComparator().reversed());
-                            for (Superhero superhero : controller.viewSuperheroes()) {
-                                System.out.println(superhero);
-                                controller.saveListOfSuperheroes(controller.viewSuperheroes());
-                            }
+                            controller.printSuperheroes();
+                            controller.saveListOfSuperheroes(controller.viewSuperheroes());
                             break;
-                    }
+
+
+                    } break;
 
                 case 7:
                     System.out.println("""
@@ -273,7 +260,6 @@ public class UserInterface {
                              4. Origin: oldest first\s
                              5. Race: Humans on top\s
                              6. Strength: Strongest on top\s
-                             7. Sort after two attributes\s
                             \s""");
                     System.out.println("Select the first attribute: ");
                     int choice1 = keyboard.nextInt();

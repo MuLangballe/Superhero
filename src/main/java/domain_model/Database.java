@@ -46,6 +46,12 @@ public class Database {
         return false;
     }
 
+    public void printSuperheroes(){
+        for (Superhero superhero : superheroes){
+            System.out.println(superhero);
+        }
+    }
+
         public int getSize () {
             return superheroes.size();
         }
