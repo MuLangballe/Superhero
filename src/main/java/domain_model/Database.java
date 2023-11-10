@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public class Database {
 
-    File CSVPath;
-    FileHandler fh;
-    ArrayList<Superhero> superheroes;
+    private File CSVPath;
+    private FileHandler fh;
+    private ArrayList<Superhero> superheroes;
 
     public Database(File CSVPath){
         this.CSVPath = CSVPath;

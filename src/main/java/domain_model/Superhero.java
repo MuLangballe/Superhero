@@ -18,24 +18,6 @@ public class Superhero {
         this.strength = strength;
     }
 
-    @Override
-    public String toString() {
-        return  "Superhero name: '" + name + '\'' +
-                ", Real name: '" + realName + '\'' +
-                ", Superpower: '" + superPower + '\'' +
-                ", Origin: " + yearCreated +
-                ", is the superhero human?: " + isHumanFormatter(isHuman) +
-                ", Strength: " + strength;
-    }
-
-    public String isHumanFormatter(boolean isHuman){
-        if (isHuman) {
-            return "Yes";
-        } else {
-            return "No";
-        }
-    }
-
     public String getName() {
         return name;
     }
@@ -82,6 +64,25 @@ public class Superhero {
 
     public void setStrength(int strength) {
         this.strength = strength;
+    }
+
+    public String isHumanFormatter(boolean isHuman){
+        if (isHuman) {
+            return "Yes";
+        } else {
+            return "No";
+        }
+    }
+
+
+    @Override
+    public String toString() {
+        return  "Superhero name: " + name +
+                ", Real name: " + realName +
+                ", Superpower: " + superPower +
+                ", Origin: " + yearCreated +
+                ", Is human: " + isHumanFormatter(isHuman) +
+                ", Strength: " + strength;
     }
 
 }

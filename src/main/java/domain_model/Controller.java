@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Controller {
     private final Database database;
     private final FileHandler fh;
-    File CSVPath;
+    private File CSVPath;
 
     public Controller(){
         CSVPath = new File("SuperheroList.csv");

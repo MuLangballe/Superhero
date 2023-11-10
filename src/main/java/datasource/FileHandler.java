@@ -17,7 +17,6 @@ public class FileHandler {
         Scanner sc;
         try {
             sc = new Scanner(CSVPath, StandardCharsets.ISO_8859_1);
-            //sc.nextLine(); //
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
@@ -42,7 +41,7 @@ public class FileHandler {
 
             superheroes.add(superhero);
         }
-        //sc.close();
+
         return superheroes;
     }
 

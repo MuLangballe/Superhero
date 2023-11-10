@@ -84,10 +84,8 @@ public class UserInterface {
 
                 case 2:
                     System.out.println("List of superheroes: ");
-                    ArrayList<Superhero> superheroes = controller.viewSuperheroes();
-                    for (Superhero superhero : superheroes) {
-                        System.out.println(superhero);
-                    }
+                   controller.printSuperheroes();
+
                     break;
 
                 case 3:
@@ -106,9 +104,9 @@ public class UserInterface {
 
                 case 4:
                     System.out.println("Which superhero do you want to edit: ");
-                    String brugerInput = keyboard.nextLine();
+                    String userInput = keyboard.nextLine();
 
-                    ArrayList<Superhero> resultsToEdit = controller.findSuperhero(brugerInput);
+                    ArrayList<Superhero> resultsToEdit = controller.findSuperhero(userInput);
                     Superhero superheroToEdit;
 
                     while (resultsToEdit.isEmpty()) {
@@ -199,7 +197,7 @@ public class UserInterface {
                 case 6:
                     System.out.println("""
                             Which attribute do you want to sort by?\s
-                            1. Suphero name: Alphabetical\s
+                             1. Suphero name: Alphabetical\s
                              2. Real name: Alphabetical\s
                              3. Superpower: Alphabetical\s
                              4. Origin: oldest first\s
@@ -254,13 +252,14 @@ public class UserInterface {
                 case 7:
                     System.out.println("""
                             Which two attributes do you want to sort by?\s
-                            1. Suphero name: Alphabetical\s
+                             1. Suphero name: Alphabetical\s
                              2. Real name: Alphabetical\s
                              3. Superpower: Alphabetical\s
                              4. Origin: oldest first\s
                              5. Race: Humans on top\s
                              6. Strength: Strongest on top\s
                             \s""");
+
                     System.out.println("Select the first attribute: ");
                     int choice1 = keyboard.nextInt();
                     keyboard.nextLine();
